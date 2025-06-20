@@ -1,0 +1,31 @@
+# deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: luanti
+  namespace: niklastverdal
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: luanti
+  template:
+    metadata:
+      labels:
+        app: luanti
+    spec:
+      containers:
+        - name: luanti
+          image: lscr.io/linuxserver/luanti:latest
+          ports:
+            - name: http
+              containerPort: 30000
+          envFrom:
+            - configMapRef:
+                name: luanti-config
+          resources:
+            requests:
+              cpu: 10m
+              memory: 256Mi
+            limits:
+              memory: 512Mi

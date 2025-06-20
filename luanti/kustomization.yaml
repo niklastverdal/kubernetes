@@ -1,0 +1,18 @@
+# kustomization.yaml
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: 'niklastverdal'
+
+resources:
+  - deployment.yaml
+  - service.yaml
+  - http-route.yaml
+
+configMapGenerator:
+  - name: luanti-config
+    namespace: 'niklastverdal'
+    literals:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/Oslo
+

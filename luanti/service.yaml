@@ -1,0 +1,14 @@
+# service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: luanti
+  namespace: niklastverdal
+spec:
+  type: ClusterIP
+  selector:
+    app: luanti
+  ports:
+    - name: web
+      port: 30000
+      targetPort: http
