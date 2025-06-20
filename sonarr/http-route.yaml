@@ -1,0 +1,20 @@
+# http-route.yaml
+apiVersion: gateway.networking.k8s.io/v1beta1
+kind: HTTPRoute
+metadata:
+  name: sonarr
+  namespace: niklastverdal
+spec:
+  parentRefs:
+    - name: gke-gateway
+      namespace: gateway
+  hostnames:
+    - sonarr-niklastverdal.s9n.no
+  rules:
+    - matches:
+        - path:
+            type: PathPrefix
+            value: /
+      backendRefs:
+        - name: sonarr
+          port: 8989

@@ -1,0 +1,14 @@
+# service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: sonarr
+  namespace: niklastverdal
+spec:
+  type: ClusterIP
+  selector:
+    app: sonarr
+  ports:
+    - name: web
+      port: 8989
+      targetPort: http
