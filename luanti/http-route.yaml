@@ -14,7 +14,7 @@ spec:
     - matches:
         - path:
             type: PathPrefix
-            value: /
+            value: /path/to/luanti/data:/config/.minetest
       backendRefs:
         - name: luanti
           port: 30000
